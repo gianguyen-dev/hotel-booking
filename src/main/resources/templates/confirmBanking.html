@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Hotel Manager</title>
+<link rel="stylesheet" th:href="@{~/assets/css/payment.css}">
+
+</head>
+
+<body>
+	<div class="container" align="center">
+		<h1>Confirm Banking</h1>
+		<p th:text="${payment}"></p>
+		<form action="#" th:action="@{/booking/payment/banking}" method="post">
+			<table>
+				<tr>
+					<td><label>ID Card</label></td>
+					<td><input type="text" th:name="id_card" /></td>
+				</tr>
+				<tr>
+					<td><label>CCV</label></td>
+					<td><input type="text" th:name="ccv" th:value="0"  /></td>
+				</tr>
+				<tr>
+					<td><label>Amount</label></td>
+					<td><input type="text" th:name="amount" th:value="${payment.price}" /></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" th:name="payment_id" th:value="${payment.payment_id}" /></td>
+				</tr>
+				<tr>
+					<td>
+					<td id="confirm"><button type="submit">Confirm</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+
+</html>

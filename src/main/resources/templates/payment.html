@@ -1,0 +1,37 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Trang thanh toán</title>
+<link rel="stylesheet" th:href="@{~/assets/css/payment.css}">
+</head>
+
+<body>
+	<div align="center">
+		<br />
+		<br />
+		<!--<p th:text="${booking}"></p>-->
+		<h1>Thanh toán</h1>
+		<form action="#" th:action="@{/booking/payment/check}" th:object="${payment}" method="post">
+			<input type="hidden" th:name="booking_id" th:value="${booking.booking_id}" />
+			<div>
+				<label>Chọn phương thức thanh toán</label>
+				<select th:name="payment_type" id="options">
+					<option th:value="0">Thanh toán khi nhận phòng
+					</option>
+					<option th:value="1">Thanh toán qua Momo
+					</option>
+					<option th:value="2">Thanh toán qua thẻ ngân hàng
+					</option>
+				</select>
+			</div>
+			<input type="hidden" th:name="status" th:value="0" />
+			<input type="hidden" th:name="price" th:value="240000" />
+			<button type="submit">Book</button>
+			<a th:href="@{'/booking/' + ${booking.room_id}}" id="back-button">Back</a><br>
+		</form>
+	</div>
+</body>
+
+</html>

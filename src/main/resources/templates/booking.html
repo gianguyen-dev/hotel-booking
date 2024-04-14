@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Trang đặt phòng</title>
+<link rel="stylesheet" th:href="@{~/assets/css/booking.css}">
+</head>
+
+<body>
+	<!--<p th:text="${room}"></p>-->
+	<div align="center">
+		<br /><br />
+		<form action="#" th:action="@{/booking/payment}" th:object="${booking}" method="post" class="booking-form">
+			<h1>Đặt phòng</h1>
+			<table>
+				<tr>
+					<td>Số phòng</td>
+					<td><input type="text" th:name="room_id" th:value="${room.room_id}" required/></td>
+
+				</tr>
+				<input type="hidden" name="user_id" id="user_id" th:value="${user_id}" />
+				<tr>
+					<td>Ngày vào</td>
+					<td><input type="date" th:field="*{checkin_date}" required/></td>
+				</tr>
+				<tr>
+					<td>Ngày ra</td>
+					<td><input type="date" th:field="*{checkout_date}" required/></td>
+				</tr>
+				<tr>
+					<td><button type="submit" id="booking-submit">Đặt ngay</button> </td>
+					<td><a th:href="@{'/detail/' + ${room.room_id}}" id="back-button">Quay về</a><br></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+
+</html>
